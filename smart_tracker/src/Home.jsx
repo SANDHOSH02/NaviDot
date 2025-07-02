@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import './index.css';
 
+// Map each item to a unique sound file (replace with actual audio files)
+const soundMap = {
+  Keys: '/sounds/key-jingle.mp3',
+  Remote: '/sounds/remote-click.mp3',
+  Wallet: '/sounds/coin-drop.mp3',
+  Laptop: '/sounds/laptop-fan.mp3',
+  'Pet Collar': '/sounds/dog-bark.mp3',
+  Luggage: '/sounds/suitcase-zip.mp3',
+  Glasses: '/sounds/glass-tap.mp3',
+  Phone: '/sounds/phone-ring.mp3',
+  Bag: '/sounds/fabric-rustle.mp3',
+  Folder: '/sounds/paper-shuffle.mp3',
+};
+
 const naviDots = [
   { id: 1, name: 'Keys', type: 'With Hole', connected: true, location: '2 meters', icon: 'fa-key' },
   { id: 2, name: 'Remote', type: 'Without Hole', connected: true, location: '2 meters', icon: 'fa fa-television' },
@@ -16,18 +30,33 @@ const naviDots = [
 
 function Home() {
   const [selectedBeacon, setSelectedBeacon] = useState(null);
+  const [audio, setAudio] = useState(null);
 
   const handleCardClick = (beacon) => {
     setSelectedBeacon(beacon);
   };
 
   const closePopup = () => {
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
     setSelectedBeacon(null);
+    setAudio(null);
   };
 
   const triggerSound = (beacon) => {
-    alert(`Triggering sound for ${beacon.name}...`);
-    // In a real app, this would send a Bluetooth signal to the device
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    
+    const newAudio = new Audio(soundMap[beacon.name]);
+    newAudio.play().catch((error) => {
+      console.error(`Error playing sound for ${beacon.name}:`, error);
+      alert(`Failed to play sound for ${beacon.name}. Please ensure audio files are correctly configured.`);
+    });
+    setAudio(newAudio);
   };
 
   return (
@@ -59,7 +88,7 @@ function Home() {
             <p><strong>Location:</strong> {selectedBeacon.location}</p>
             {selectedBeacon.connected && (
               <button className="sound-button" onClick={() => triggerSound(selectedBeacon)}>
-                Use Sound
+                Play Sound
               </button>
             )}
             <button className="close-button" onClick={closePopup}>
