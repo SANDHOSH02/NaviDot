@@ -2,16 +2,16 @@ import { useState } from 'react';
 import './index.css';
 
 const echoBeacons = [
-  { id: 1, name: 'Keys', type: 'With Hole', connected: true, location: 'Living Room - Under Couch' },
-  { id: 2, name: 'Remote', type: 'Without Hole', connected: true, location: 'Bedroom - Nightstand' },
+  { id: 1, name: 'Keys', type: 'With Hole', connected: true, location: '2 meter' },
+  { id: 2, name: 'Remote', type: 'Without Hole', connected: true, location: '2 meter' },
   { id: 3, name: 'Wallet', type: 'With Clip', connected: false, location: 'Unknown' },
-  { id: 4, name: 'Laptop', type: 'Without Hole', connected: true, location: 'Study - Desk' },
-  { id: 5, name: 'Pet Collar', type: 'With Hole', connected: true, location: 'Backyard' },
+  { id: 4, name: 'Laptop', type: 'Without Hole', connected: true, location: '3 meter' },
+  { id: 5, name: 'Pet Collar', type: 'With Hole', connected: true, location: '1 meter' },
   { id: 6, name: 'Luggage', type: 'With Clip', connected: false, location: 'Unknown' },
-  { id: 7, name: 'Glasses', type: 'Without Hole', connected: true, location: 'Kitchen - Counter' },
-  { id: 8, name: 'Phone', type: 'Without Hole', connected: true, location: 'Living Room - Table' },
+  { id: 7, name: 'Glasses', type: 'Without Hole', connected: true, location: '2 meter' },
+  { id: 8, name: 'Phone', type: 'Without Hole', connected: true, location: '6 meter' },
   { id: 9, name: 'Bag', type: 'With Hole', connected: false, location: 'Unknown' },
-  { id: 10, name: 'Folder', type: 'With Clip', connected: true, location: 'Office - Shelf' },
+  { id: 10, name: 'Folder', type: 'With Clip', connected: true, location: '8 meter' },
 ];
 
 function Home() {
