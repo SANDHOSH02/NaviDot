@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './index.css';
 
-// Map each item to a unique sound file (replace with actual audio files)
 const soundMap = {
   Keys: '/sounds/key-jingle.mp3',
   Remote: '/sounds/remote-click.mp3',
